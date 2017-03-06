@@ -43,7 +43,7 @@ public class ConsistencyCheckSettings
             "However, the check is very expensive in time and memory, so it is skipped by default.")
     public static final Setting<Boolean> consistency_check_property_owners = setting( "tools.consistency_checker.check_property_owners", BOOLEAN, FALSE );
 
-    @Description("Perform checks on the label scan store. Checking this store is more expensive than " +
+    @Description("Perform checks on the label indexes. Checking label indexes is more expensive than " +
             "checking the native stores, so it may be useful to turn off this check for very large databases.")
     public static final Setting<Boolean> consistency_check_label_scan_store = setting( "tools.consistency_checker.check_label_scan_store", BOOLEAN, TRUE );
 
