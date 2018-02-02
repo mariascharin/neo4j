@@ -309,11 +309,12 @@ public class SecuritySettings
 
     @Description( "This provides a finer level of control over which roles can execute procedures than the " +
                   "`" + PROC_ALLOWED_SETTING_DEFAULT_NAME + "` setting. For example: `dbms.security.procedures.roles=" +
-                  "apoc.convert.*:reader;apoc.load.json*:writer;apoc.trigger.add:TriggerHappy` will allow the role " +
-                  "`reader` to execute all procedures in the `apoc.convert` namespace, the role `writer` to execute " +
-                  "all procedures in the `apoc.load` namespace that starts with `json` and the role `TriggerHappy` " +
-                  "to execute the specific procedure `apoc.trigger.add`. Procedures not matching any of these " +
-                  "patterns will be subject to the `" + PROC_ALLOWED_SETTING_DEFAULT_NAME + "` setting." )
+                  "apoc.convert.*:Converter;apoc.load.json.*:Converter,DataSource;apoc.trigger.add:TriggerHappy` " +
+                  "will allow all users with the `Converter` role to execute all procedures in the `apoc.convert` namespace, " +
+                  "all users with the `Converter` or `DataSource` roles to execute all procedures in the `apoc.load.json` namespace, " +
+                  "and all users with the `TriggerHappy` role to execute the specific procedure `apoc.trigger.add`. " +
+                  "Procedures not matching any of these patterns will be subject to the " +
+                  "`" + PROC_ALLOWED_SETTING_DEFAULT_NAME + "` setting." )
     public static final Setting<String> procedure_roles = setting( PROC_ALLOWED_SETTING_ROLES, STRING, "" );
 
     //=========================================================================
